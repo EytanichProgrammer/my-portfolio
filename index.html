@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>איתן סבידובסקי - פורטפוליו Cyber</title>
+  <title>איתן סבידובסקי - פורטפוליו</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Heebo:wght@300;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Heebo:wght@300;400;500;700;900&display=swap');
 
     * {
       margin: 0;
@@ -18,9 +18,9 @@
       --neon-blue: #05d9e8;
       --neon-purple: #d300c5;
       --neon-green: #01ffc3;
-      --dark: #0a0a12;
-      --glass: rgba(255, 255, 255, 0.05);
-      --glass-border: rgba(255, 255, 255, 0.1);
+      --dark: #07080e;
+      --card-bg: rgba(18, 20, 32, 0.65);
+      --card-border: rgba(5, 217, 232, 0.15);
     }
 
     body {
@@ -29,13 +29,10 @@
       color: white;
       overflow-x: hidden;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      scroll-behavior: smooth;
     }
 
-    /* רקע אנימטיבי, כוכבים ואורות */
+    /* רקע ואורות */
     .bg-animation {
       position: fixed;
       top: 0;
@@ -43,7 +40,7 @@
       width: 100%;
       height: 100%;
       z-index: -2;
-      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      background: radial-gradient(ellipse at bottom, #101524 0%, #07080e 100%);
     }
 
     .stars {
@@ -65,17 +62,8 @@
       box-shadow: 
         100px 200px white, 300px 100px white, 500px 400px white,
         700px 50px white, 900px 300px white, 1100px 150px white,
-        200px 500px white, 400px 700px white, 600px 250px white,
-        800px 600px white, 1000px 450px white, 1200px 100px white,
-        50px 350px white, 250px 50px white, 450px 550px white;
+        200px 500px white, 400px 700px white, 600px 250px white;
       animation: twinkle 4s infinite;
-    }
-
-    .stars::after {
-      box-shadow: 
-        150px 250px #05d9e8, 350px 150px #ff2a6d, 550px 450px #d300c5,
-        750px 100px #01ffc3, 950px 350px #05d9e8, 1150px 200px #ff2a6d;
-      animation: twinkle 3s infinite reverse;
     }
 
     @keyframes twinkle {
@@ -83,78 +71,52 @@
       50% { opacity: 1; }
     }
 
-    /* Floating Orbs */
     .orb {
       position: fixed;
       border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.35;
+      filter: blur(90px);
+      opacity: 0.3;
       z-index: -1;
       animation: float 12s infinite ease-in-out;
     }
 
-    .orb1 {
-      width: 350px;
-      height: 350px;
-      background: var(--neon-purple);
-      top: 10%;
-      right: 10%;
-    }
-
-    .orb2 {
-      width: 300px;
-      height: 300px;
-      background: var(--neon-blue);
-      bottom: 10%;
-      left: 10%;
-      animation-delay: 3s;
-    }
-
-    .orb3 {
-      width: 250px;
-      height: 250px;
-      background: var(--neon-pink);
-      top: 40%;
-      left: 40%;
-      animation-delay: 6s;
-    }
+    .orb1 { width: 350px; height: 350px; background: var(--neon-purple); top: 10%; right: 10%; }
+    .orb2 { width: 300px; height: 300px; background: var(--neon-blue); bottom: 10%; left: 10%; animation-delay: 3s; }
 
     @keyframes float {
       0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(40px, -60px) scale(1.1); }
-      66% { transform: translate(-30px, 40px) scale(0.9); }
+      50% { transform: translate(30px, -50px) scale(1.1); }
     }
 
-    /* ניווט עליון */
+    /* תפריט עליון */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      padding: 15px 40px;
+      padding: 15px 50px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
-      background: rgba(10, 10, 18, 0.7);
+      background: rgba(7, 8, 14, 0.8);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(5, 217, 232, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .logo {
       font-family: 'Orbitron', sans-serif;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
-      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink), var(--neon-purple));
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: 2px;
-      text-shadow: 0 0 20px rgba(5, 217, 232, 0.5);
     }
 
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 25px;
     }
 
     .nav-links {
@@ -164,194 +126,307 @@
     }
 
     .nav-links a {
-      color: white;
+      color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
+      font-size: 0.95rem;
       font-weight: 500;
       transition: 0.3s;
     }
 
     .nav-links a:hover {
       color: var(--neon-blue);
-      text-shadow: 0 0 12px var(--neon-blue);
     }
 
-    /* תפריט בחירת שפה */
     .lang-select {
       background: rgba(255, 255, 255, 0.08);
       color: var(--neon-blue);
-      border: 1px solid rgba(5, 217, 232, 0.4);
+      border: 1px solid rgba(5, 217, 232, 0.3);
       padding: 6px 12px;
       border-radius: 12px;
-      font-family: 'Heebo', sans-serif;
       font-weight: 600;
-      font-size: 0.9rem;
       cursor: pointer;
       outline: none;
-      backdrop-filter: blur(10px);
+    }
+
+    /* Hero Section (כמו בתמונה הראשונה) */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 20px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      width: 100%;
+      flex-wrap: wrap-reverse;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 320px;
+    }
+
+    /* תגית זמין לפרויקטים */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(1, 255, 195, 0.1);
+      border: 1px solid rgba(1, 255, 195, 0.3);
+      color: var(--neon-green);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--neon-green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #fff 30%, var(--neon-blue) 70%, var(--neon-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
 
-    .lang-select:hover {
-      background: rgba(5, 217, 232, 0.2);
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 15px rgba(5, 217, 232, 0.4);
-    }
-
-    .lang-select option {
-      background: #0a0a12;
+    .btn-primary {
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
       color: white;
+      box-shadow: 0 0 20px rgba(5, 217, 232, 0.3);
     }
 
-    /* כרטיסייה ראשית */
-    .container {
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 35px rgba(5, 217, 232, 0.6);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    /* תמונת פרופיל עם התגיות הצפות */
+    .hero-image-wrapper {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
-      padding: 120px 20px 40px;
+      margin: 0 auto;
     }
 
-    .main-card {
-      background: rgba(15, 15, 25, 0.65);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      border: 1px solid rgba(5, 217, 232, 0.25);
-      border-radius: 28px;
-      padding: 50px 35px;
-      max-width: 480px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 0 40px rgba(5, 217, 232, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.03);
-      transition: all 0.4s ease;
-    }
-
-    .main-card:hover {
-      border-color: rgba(255, 42, 109, 0.4);
-      box-shadow: 0 0 60px rgba(255, 42, 109, 0.25);
-    }
-
-    /* תמונת פרופיל ניאון */
-    .profile-img-container {
+    .profile-glow-circle {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
       position: relative;
-      display: inline-block;
-      margin-bottom: 25px;
+      padding: 5px;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      box-shadow: 0 0 50px rgba(5, 217, 232, 0.4);
     }
 
     .profile-img {
-      width: 130px;
-      height: 130px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--neon-blue);
-      box-shadow: 0 0 25px rgba(5, 217, 232, 0.6);
-      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
-    .profile-img-container:hover .profile-img {
-      transform: scale(1.06);
-      border-color: var(--neon-pink);
-      box-shadow: 0 0 35px rgba(255, 42, 109, 0.8);
+    /* תגית גיל/מידע צפה מתחת לתמונה */
+    .floating-tag {
+      position: absolute;
+      bottom: -10px;
+      background: rgba(15, 18, 30, 0.85);
+      border: 1px solid var(--neon-blue);
+      backdrop-filter: blur(10px);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: white;
+      box-shadow: 0 0 15px rgba(5, 217, 232, 0.3);
     }
 
-    /* כותרות סייבר */
-    h1 {
+    /* סקציית אודותיי */
+    .section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-tag {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
+      font-size: 0.85rem;
+      color: var(--neon-blue);
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
       font-weight: 900;
-      margin-bottom: 15px;
-      background: linear-gradient(135deg, #fff 0%, var(--neon-blue) 50%, var(--neon-purple) 100%);
+      margin-bottom: 25px;
+      background: linear-gradient(90deg, #fff, var(--neon-blue));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: glowText 3s ease-in-out infinite alternate;
-      line-height: 1.3;
     }
 
-    @keyframes glowText {
-      from { filter: drop-shadow(0 0 8px rgba(5, 217, 232, 0.4)); }
-      to { filter: drop-shadow(0 0 20px rgba(255, 42, 109, 0.7)); }
-    }
-
-    p.subtitle {
+    .about-text {
       color: rgba(255, 255, 255, 0.75);
-      font-size: 1.05rem;
-      margin-bottom: 40px;
-      line-height: 1.6;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 750px;
+      margin: 0 auto;
     }
 
-    /* כרטיסיות קישורים ניאון */
-    .links-container {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
+    /* סקציית פעילות (כמו בתמונה השנייה) */
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
     }
 
-    .link-item {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 18px;
-      padding: 16px 25px;
-      color: white;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 15px;
+    .activity-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 35px 25px;
+      text-align: right;
       transition: all 0.3s ease;
       position: relative;
-      overflow: hidden;
     }
 
-    .link-item:hover {
-      background: rgba(5, 217, 232, 0.1);
+    html[dir="ltr"] .activity-card {
+      text-align: left;
+    }
+
+    .activity-card:hover {
+      transform: translateY(-8px);
       border-color: var(--neon-blue);
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 0 25px rgba(5, 217, 232, 0.3);
+      box-shadow: 0 10px 30px rgba(5, 217, 232, 0.2);
     }
 
-    .link-item.portfolio {
-      background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-      color: white;
-      font-weight: 700;
-      border: none;
-      box-shadow: 0 0 25px rgba(5, 217, 232, 0.4);
-    }
-
-    .link-item.portfolio:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 0 40px rgba(5, 217, 232, 0.8), 0 0 60px rgba(211, 0, 197, 0.5);
-    }
-
-    .link-item span.icon {
-      font-size: 1.4rem;
-      width: 30px;
+    .card-icon-box {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, rgba(5, 217, 232, 0.2), rgba(211, 0, 197, 0.2));
+      border: 1px solid var(--neon-blue);
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
     }
 
-    .link-item strong {
-      font-size: 1.1rem;
-      font-family: 'Heebo', sans-serif;
+    .activity-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: white;
+    }
+
+    .activity-card p {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* סקציית כלים ופיתוח (תגיות שחורות בתחתית התמונה השנייה) */
+    .tools-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .tag-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.85);
+      transition: all 0.3s ease;
+    }
+
+    .tag-item:hover {
+      border-color: var(--neon-blue);
+      color: var(--neon-blue);
+      background: rgba(5, 217, 232, 0.1);
+      transform: translateY(-2px);
     }
   </style>
 </head>
 <body>
 
-  <!-- רקע ואורות -->
   <div class="bg-animation"></div>
   <div class="stars"></div>
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
-  <div class="orb orb3"></div>
 
-  <!-- תפריט עליון עם בחירת שפה -->
+  <!-- תפריט עליון -->
   <nav>
     <div class="logo">EYTAN.DEV</div>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="#projects" id="nav-projects">פרויקטים</a></li>
+        <li><a href="#about" id="nav-about">אודות</a></li>
+        <li><a href="#activity" id="nav-activity">פעילות</a></li>
+        <li><a href="#tools" id="nav-tools">כלים</a></li>
+        <li><a href="https://github.com/EytanichProgrammer" target="_blank">GitHub</a></li>
       </ul>
       
-      <!-- בחירת שפה -->
       <select class="lang-select" onchange="changeLanguage(this.value)">
         <option value="he" selected>🇮🇱 עברית</option>
         <option value="en">🇺🇸 English</option>
@@ -361,68 +436,183 @@
     </div>
   </nav>
 
-  <!-- כרטיסיית הפורטפוליו -->
-  <div class="container">
-    <div class="main-card">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
       
-      <div class="profile-img-container">
-        <img src="WhatsApp Image 2026-07-28 at 16.46.48.jpeg" alt="איתן סבידובסקי" class="profile-img">
-      </div>
-
-      <h1 id="title">שלום, אני איתן סבידובסקי 👋</h1>
-      <p class="subtitle" id="subtitle">מפתח / מעצב | מומחה בפרויקטים ופתרונות טכנולוגיים</p>
-
-      <div class="links-container">
+      <div class="hero-text">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span id="status-text">זמין לפרויקטים חדשים</span>
+        </div>
         
-        <a href="#projects" class="link-item portfolio">
-          <span class="icon">🚀</span>
-          <strong id="btn-portfolio">תיק עבודות</strong>
-        </a>
-
-        <a href="https://github.com/EytanichProgrammer" target="_blank" class="link-item">
-          <span class="icon">🐙</span>
-          <strong>GitHub</strong>
-        </a>
-
-        <a href="https://linkedin.com/in/YOUR-PROFILE" target="_blank" class="link-item">
-          <span class="icon">💼</span>
-          <strong>LinkedIn</strong>
-        </a>
-
+        <h1 id="hero-title">היי, אני איתן סבידובסקי.</h1>
+        <p id="hero-subtitle">מפתח, מעצב ויוצר תוכן – משלב יצירתיות, טכנולוגיה ופתרונות מתקדמים.</p>
+        
+        <div class="btn-group">
+          <a href="#activity" class="btn btn-primary" id="btn-projects">
+            <span>🚀</span> <span id="btn-projects-text">לפרויקטים שלי</span>
+          </a>
+          <a href="https://github.com/EytanichProgrammer" target="_blank" class="btn btn-secondary" id="btn-contact">
+            <span>💬</span> <span id="btn-contact-text">צור קשר</span>
+          </a>
+        </div>
       </div>
+
+      <div class="hero-image-wrapper">
+        <div class="profile-glow-circle">
+          <img src="WhatsApp Image 2026-07-28 at 16.46.48.jpeg" alt="איתן סבידובסקי" class="profile-img">
+        </div>
+        <div class="floating-tag" id="floating-tag">✨ מפתח ויוצר תוכן</div>
+      </div>
+
     </div>
-  </div>
+  </section>
+
+  <!-- סקציית אודותיי -->
+  <section class="section" id="about">
+    <div class="section-tag">WHO AM I</div>
+    <h2 class="section-title" id="about-title">אודותיי</h2>
+    <p class="about-text" id="about-text">
+      אני איתן סבידובסקי, מפתח ומעצב עם תשוקה לטכנולוגיה ויצירה דיגיטלית. אני אוהב ללמוד טכנולוגיות חדשות, לעבוד עם כלי בינה מלאכותית (AI) ולהפוך רעיונות למוצרים עובדים ומרשימים. בכל פרויקט אני שואף להשתפר, להתקדם ולספק תוצאות באיכות הגבוהה ביותר.
+    </p>
+  </section>
+
+  <!-- סקציית פעילות (3 כרטיסיות) -->
+  <section class="section" id="activity">
+    <div class="section-tag">ACTIVITY</div>
+    <h2 class="section-title" id="activity-title">פעילות</h2>
+
+    <div class="activity-grid">
+      
+      <div class="activity-card">
+        <div class="card-icon-box">💻</div>
+        <h3 id="card1-title">פיתוח אתרים ו-Web</h3>
+        <p id="card1-desc">תכנון, אפיין ופיתוח אתרים ואפליקציות ווב מודרניות ומהירות בעזרת טכנולוגיות קוד מתקדמות.</p>
+      </div>
+
+      <div class="activity-card">
+        <div class="card-icon-box">🎬</div>
+        <h3 id="card2-title">הפקת תוכן ועריכה</h3>
+        <p id="card2-desc">יצירה ועריכת סרטונים מותאמים לרשתות החברתיות (Shorts, Reels, TikTok) מהרעיון ועד התוצר הסופי.</p>
+      </div>
+
+      <div class="activity-card">
+        <div class="card-icon-box">🚀</div>
+        <h3 id="card3-title">יזמות ופרויקטים עצמאיים</h3>
+        <p id="card3-desc">פיתוח וניהול מיזמים טכנולוגיים, יצירת פתרונות דיגיטליים ויישום כלי AI מתקדמים.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- סקציית פיתוח ועיצוב (תגיות) -->
+  <section class="section" id="tools">
+    <div class="section-tag">TOOLS</div>
+    <h2 class="section-title" id="tools-title">פיתוח ועיצוב</h2>
+
+    <div class="tools-tags">
+      <span class="tag-item">HTML5</span>
+      <span class="tag-item">CSS3</span>
+      <span class="tag-item">JavaScript</span>
+      <span class="tag-item">GitHub</span>
+      <span class="tag-item">בניית אפליקציות עם AI</span>
+      <span class="tag-item">No-Code / Low-Code</span>
+      <span class="tag-item">עריכת Shorts & Reels</span>
+      <span class="tag-item">TikTok Content</span>
+    </div>
+  </section>
 
   <!-- סקריפט החלפת שפות -->
   <script>
     const translations = {
       he: {
         dir: 'rtl',
-        navProjects: 'פרויקטים',
-        title: 'שלום, אני איתן סבידובסקי 👋',
-        subtitle: 'מפתח / מעצב | מומחה בפרויקטים ופתרונות טכנולוגיים',
-        btnPortfolio: 'תיק עבודות'
+        navAbout: 'אודות',
+        navActivity: 'פעילות',
+        navTools: 'כלים',
+        statusText: 'זמין לפרויקטים חדשים',
+        heroTitle: 'היי, אני איתן סבידובסקי.',
+        heroSubtitle: 'מפתח, מעצב ויוצר תוכן – משלב יצירתיות, טכנולוגיה ופתרונות מתקדמים.',
+        btnProjectsText: 'לפרויקטים שלי',
+        btnContactText: 'צור קשר',
+        floatingTag: '✨ מפתח ויוצר תוכן',
+        aboutTitle: 'אודותיי',
+        aboutText: 'אני איתן סבידובסקי, מפתח ומעצב עם תשוקה לטכנולוגיה ויצירה דיגיטלית. אני אוהב ללמוד טכנולוגיות חדשות, לעבוד עם כלי בינה מלאכותית (AI) ולהפוך רעיונות למוצרים עובדים ומרשימים. בכל פרויקט אני שואף להשתפר, להתקדם ולספק תוצאות באיכות הגבוהה ביותר.',
+        activityTitle: 'פעילות',
+        card1Title: 'פיתוח אתרים ו-Web',
+        card1Desc: 'תכנון, אפיין ופיתוח אתרים ואפליקציות ווב מודרניות ומהירות בעזרת טכנולוגיות קוד מתקדמות.',
+        card2Title: 'הפקת תוכן ועריכה',
+        card2Desc: 'יצירה ועריכת סרטונים מותאמים לרשתות החברתיות (Shorts, Reels, TikTok) מהרעיון ועד התוצר הסופי.',
+        card3Title: 'יזמות ופרויקטים עצמאיים',
+        card3Desc: 'פיתוח וניהול מיזמים טכנולוגיים, יצירת פתרונות דיגיטליים ויישום כלי AI מתקדמים.',
+        toolsTitle: 'פיתוח ועיצוב'
       },
       en: {
         dir: 'ltr',
-        navProjects: 'Projects',
-        title: 'Hi, I\'m Eytan Svidovsky 👋',
-        subtitle: 'Developer / Designer | Tech Solutions Specialist',
-        btnPortfolio: 'Portfolio'
+        navAbout: 'About',
+        navActivity: 'Activity',
+        navTools: 'Tools',
+        statusText: 'Available for new projects',
+        heroTitle: 'Hi, I\'m Eytan Svidovsky.',
+        heroSubtitle: 'Developer, Designer & Content Creator – Combining creativity, tech, and advanced solutions.',
+        btnProjectsText: 'My Projects',
+        btnContactText: 'Contact Me',
+        floatingTag: '✨ Developer & Creator',
+        aboutTitle: 'About Me',
+        aboutText: 'I\'m Eytan Svidovsky, a developer and designer passionate about technology and digital creation. I love learning new technologies, working with AI tools, and turning ideas into real, impressive products. In every project, I aim to improve, innovate, and deliver top-quality results.',
+        activityTitle: 'Activity',
+        card1Title: 'Web Development',
+        card1Desc: 'Designing and building modern, fast web applications using advanced coding technologies.',
+        card2Title: 'Content & Video Editing',
+        card2Desc: 'Creating and editing video content for social media (Shorts, Reels, TikTok) from idea to final release.',
+        card3Title: 'Projects & Innovation',
+        card3Desc: 'Developing personal tech projects, digital solutions, and integrating modern AI tools.',
+        toolsTitle: 'Development & Design'
       },
       es: {
         dir: 'ltr',
-        navProjects: 'Proyectos',
-        title: 'Hola, soy Eytan Svidovsky 👋',
-        subtitle: 'Desarrollador / Diseñador | Especialista en Soluciones Tecnológicas',
-        btnPortfolio: 'Portafolio'
+        navAbout: 'Sobre mí',
+        navActivity: 'Actividad',
+        navTools: 'Herramientas',
+        statusText: 'Disponible para nuevos proyectos',
+        heroTitle: 'Hola, soy Eytan Svidovsky.',
+        heroSubtitle: 'Desarrollador, Diseñador y Creador – Combinando creatividad, tecnología y soluciones avanzadas.',
+        btnProjectsText: 'Mis Proyectos',
+        btnContactText: 'Contacto',
+        floatingTag: '✨ Desarrollador y Creador',
+        aboutTitle: 'Sobre mí',
+        aboutText: 'Soy Eytan Svidovsky, un desarrollador y diseñador apasionado por la tecnología y la creación digital.',
+        activityTitle: 'Actividad',
+        card1Title: 'Desarrollo Web',
+        card1Desc: 'Diseño y desarrollo de sitios web modernos y rápidos.',
+        card2Title: 'Producción de Contenido',
+        card2Desc: 'Creación y edición de videos para redes sociales (Reels, TikTok, Shorts).',
+        card3Title: 'Proyectos Independientes',
+        card3Desc: 'Desarrollo de proyectos tecnológicos e integración de herramientas de IA.',
+        toolsTitle: 'Desarrollo y Diseño'
       },
       ar: {
         dir: 'rtl',
-        navProjects: 'مشاريع',
-        title: 'أهلاً، أنا إيتان سفيدوفسكي 👋',
-        subtitle: 'مطور / مصمم | خبير في الحلول التكنولوجية',
-        btnPortfolio: 'معرض الأعمال'
+        navAbout: 'عنـي',
+        navActivity: 'الأنشطة',
+        navTools: 'الأدوات',
+        statusText: 'متاح لمشاريع جديدة',
+        heroTitle: 'أهلاً، أنا إيتان سفيدوفسكي.',
+        heroSubtitle: 'مطور ومصمم وصانع محتوى – أدمج الإبداع والتكنولوجيا والحلول المتقدمة.',
+        btnProjectsText: 'مشاريعي',
+        btnContactText: 'تواصل معي',
+        floatingTag: '✨ مطور وصانع محتوى',
+        aboutTitle: 'عنـي',
+        aboutText: 'أنا إيتان سفيدوفسكي، مطور ومصمم شغوف بالتكنولوجيا والإبداع الرقمي.',
+        activityTitle: 'الأنشطة',
+        card1Title: 'تطوير المواقع',
+        card1Desc: 'تصميم وتطوير مواقع وتطبيقات ويب حديثة وسريعة.',
+        card2Title: 'إنتاج المحتوى والمونتاج',
+        card2Desc: 'إنشاء وتعديل الفيديوهات لوسائل التواصل الاجتماعي.',
+        card3Title: 'المشاريع والابتكار',
+        card3Desc: 'تطوير مشاريع تكنولوجية واستخدام أدوات الذكاء الاصطناعي.',
+        toolsTitle: 'التطوير والتصميم'
       }
     };
 
@@ -430,15 +620,28 @@
       const data = translations[lang];
       if (!data) return;
 
-      // שינוי כיוון הדף (RTL / LTR)
       document.documentElement.dir = data.dir;
       document.documentElement.lang = lang;
 
-      // עדכון הטקסטים
-      document.getElementById('nav-projects').innerText = data.navProjects;
-      document.getElementById('title').innerText = data.title;
-      document.getElementById('subtitle').innerText = data.subtitle;
-      document.getElementById('btn-portfolio').innerText = data.btnPortfolio;
+      document.getElementById('nav-about').innerText = data.navAbout;
+      document.getElementById('nav-activity').innerText = data.navActivity;
+      document.getElementById('nav-tools').innerText = data.navTools;
+      document.getElementById('status-text').innerText = data.statusText;
+      document.getElementById('hero-title').innerText = data.heroTitle;
+      document.getElementById('hero-subtitle').innerText = data.heroSubtitle;
+      document.getElementById('btn-projects-text').innerText = data.btnProjectsText;
+      document.getElementById('btn-contact-text').innerText = data.btnContactText;
+      document.getElementById('floating-tag').innerText = data.floatingTag;
+      document.getElementById('about-title').innerText = data.aboutTitle;
+      document.getElementById('about-text').innerText = data.aboutText;
+      document.getElementById('activity-title').innerText = data.activityTitle;
+      document.getElementById('card1-title').innerText = data.card1Title;
+      document.getElementById('card1-desc').innerText = data.card1Desc;
+      document.getElementById('card2-title').innerText = data.card2Title;
+      document.getElementById('card2-desc').innerText = data.card2Desc;
+      document.getElementById('card3-title').innerText = data.card3Title;
+      document.getElementById('card3-desc').innerText = data.card3Desc;
+      document.getElementById('tools-title').innerText = data.toolsTitle;
     }
   </script>
 
