@@ -3,121 +3,237 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>הפורטפוליו שלי</title>
+  <title>איתן סבידובסקי - פורטפוליו</title>
   <style>
-    /* רקע שחור כהה עיצוב נקי */
+    /* הגדרות כלליות */
+    :root {
+      --bg-color: #0d0d0f;
+      --card-bg: rgba(26, 26, 29, 0.7);
+      --highlight-color: #00e676; /* ירוק מודרני מודגש */
+      --text-main: #ffffff;
+      --text-sub: #b1b1b7;
+      --glass-blur: blur(20px);
+    }
+
     body {
-      background-color: #0b0b0b;
-      color: #ffffff;
-      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       margin: 0;
+      overflow-x: hidden;
     }
 
-    /* מיקום במרכז */
+    /* מיקום וכרטיסייה (Glassmorphism) */
     .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .main-card {
+      background: var(--card-bg);
+      -webkit-backdrop-filter: var(--glass-blur);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      padding: 60px 40px;
+      max-width: 450px;
+      width: 100%;
       text-align: center;
-      max-width: 600px;
-      padding: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      transition: box-shadow 0.3s ease;
     }
 
-    /* תמונת פרופיל עגולה */
-    .profile-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      margin-bottom: 20px;
+    .main-card:hover {
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
     }
 
-    /* כותרות */
-    h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    p.subtitle {
-      color: #a0a0a0;
-      font-size: 1rem;
+    /* תמונת פרופיל יוקרתית */
+    .profile-img-container {
+      position: relative;
+      display: inline-block;
       margin-bottom: 30px;
     }
 
-    /* גריד של כרטיסיות הקישורים */
-    .links-grid {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      flex-wrap: wrap;
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease, border-color 0.4s ease;
     }
 
-    /* עיצוב כל כרטיסייה */
-    .card {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
-      padding: 15px 25px;
-      color: white;
-      text-decoration: none;
+    /* אפקט זוהר לתמונה */
+    .profile-img-container::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0.7;
+      transition: opacity 0.4s ease;
+    }
+
+    .profile-img-container:hover .profile-img {
+      transform: scale(1.05);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .profile-img-container:hover::after {
+      opacity: 1;
+    }
+
+    /* כותרות ופרטים */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    h1 span.wave {
+      font-size: 1.8rem;
+    }
+
+    p.subtitle {
+      color: var(--text-sub);
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 50px;
+      line-height: 1.6;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* גריד של קישורים מודרניים - פריסה אנכית */
+    .links-container {
       display: flex;
       flex-direction: column;
+      gap: 20px;
+    }
+
+    /* עיצוב כל כרטיסיית קישור */
+    .link-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 18px;
+      padding: 18px 30px;
+      color: var(--text-main);
+      text-decoration: none;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      min-width: 100px;
-      transition: all 0.2s ease;
+      justify-content: start; /* יישור לימין לטקסט */
+      gap: 18px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .card:hover {
-      background: #252525;
-      transform: translateY(-3px);
+    /* אפקט מעבר ייחודי - צבעוניות */
+    .link-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-4px) scale(1.02);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     }
 
-    /* כרטיסייה מודגשת */
-    .card.highlight {
-      background: #ffffff;
+    /* הבלטה של אייקון וטקסט ב-hover */
+    .link-item:hover span.icon {
+      filter: drop-shadow(0 0 5px rgba(255,255,255,0.6));
+    }
+
+    /* כרטיסיית "תיק עבודות" המודגשת */
+    .link-item.portfolio {
+      background: var(--text-main);
       color: #000000;
+      font-weight: 600;
+      border-color: #ffffff;
     }
 
-    .card.highlight:hover {
-      background: #e5e5e5;
+    .link-item.portfolio:hover {
+      background: #f0f0f0;
+      color: #000000;
+      transform: translateY(-4px);
     }
+
+    /* עיצוב אייקונים עדין */
+    .link-item span.icon {
+      font-size: 1.5rem;
+      width: 30px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: filter 0.3s ease;
+    }
+
+    /* יישור טקסט לימין */
+    .link-item strong {
+      font-size: 1.15rem;
+      letter-spacing: -0.2px;
+    }
+
+    /* פונטים - אופציונלי אך משפר משמעותית */
+    /* מומלץ להוסיף קישור לפונט בגוף ה-head */
+    
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <div class="container">
-    <!-- תמונת פרופיל -->
-    <img src="WhatsApp Image 2026-07-28 at 16.46.48.jpeg" alt="איתן סבידובסקי" class="profile-img">
+    <div class="main-card">
+      <!-- תמונת פרופיל -->
+      <div class="profile-img-container">
+        <img src="WhatsApp Image 2026-07-28 at 16.46.48.jpeg" alt="פרופיל איתן סבידובסקי" class="profile-img">
+      </div>
 
-    <!-- פרטים אישיים -->
-    <h1>שלום, אני איתן סבידובסקי 👋</h1>
-    <p class="subtitle">מפתח / מעצב | מומחה בפרויקטים ופתרונות טכנולוגיים</p>
+      <!-- פרטים אישיים -->
+      <h1>
+        <span class="wave">👋</span>
+        שלום, אני איתן סבידובסקי
+      </h1>
+      <p class="subtitle">מפתח / מעצב | מומחה בפרויקטים ופתרונות טכנולוגיים</p>
 
-    <!-- כרטיסיות קישורים -->
-    <div class="links-grid">
+      <!-- כרטיסיות קישורים (אנכית ומודרנית) -->
+      <div class="links-container">
+        
+        <!-- תיק עבודות / פרויקטים - מודגש -->
+        <a href="#projects" class="link-item portfolio">
+          <span class="icon">🚀</span>
+          <strong>תיק עבודות</strong>
+        </a>
 
-      <!-- תיק עבודות / פרויקטים -->
-      <a href="#projects" class="card highlight">
-        <span>🚀</span>
-        <strong>תיק עבודות</strong>
-      </a>
+        <!-- קישור ל-GitHub -->
+        <a href="https://github.com/EytanichProgrammer" target="_blank" class="link-item">
+          <span class="icon">🐙</span>
+          <strong>GitHub</strong>
+        </a>
 
-      <!-- קישור ל-LinkedIn -->
-      <a href="https://linkedin.com/in/YOUR-PROFILE" target="_blank" class="card">
-        <span>💼</span>
-        <strong>LinkedIn</strong>
-      </a>
+        <!-- קישור ל-LinkedIn -->
+        <a href="https://linkedin.com/in/YOUR-PROFILE" target="_blank" class="link-item">
+          <span class="icon">💼</span>
+          <strong>LinkedIn</strong>
+        </a>
 
-      <!-- קישור ל-GitHub -->
-      <a href="https://github.com/YOUR-USERNAME" target="_blank" class="card">
-        <span>🐙</span>
-        <strong>GitHub</strong>
-      </a>
-
+      </div>
     </div>
   </div>
 
