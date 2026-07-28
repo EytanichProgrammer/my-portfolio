@@ -1,233 +1,389 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>איתן סבידובסקי - פורטפוליו</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>איתן סבידובסקי - פורטפוליו Cyber</title>
   <style>
-    /* הגדרות כלליות */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Heebo:wght@300;500;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     :root {
-      --bg-color: #0d0d0f;
-      --card-bg: rgba(26, 26, 29, 0.7);
-      --highlight-color: #00e676; /* ירוק מודרני מודגש */
-      --text-main: #ffffff;
-      --text-sub: #b1b1b7;
-      --glass-blur: blur(20px);
+      --neon-pink: #ff2a6d;
+      --neon-blue: #05d9e8;
+      --neon-purple: #d300c5;
+      --neon-green: #01ffc3;
+      --dark: #0a0a12;
+      --glass: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
     }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
+      font-family: 'Heebo', sans-serif;
+      background: var(--dark);
+      color: white;
       overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* מיקום וכרטיסייה (Glassmorphism) */
+    /* רקע אנימטיבי, כוכבים ואורות */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: transparent;
+    }
+
+    .stars::before, .stars::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      box-shadow: 
+        100px 200px white, 300px 100px white, 500px 400px white,
+        700px 50px white, 900px 300px white, 1100px 150px white,
+        200px 500px white, 400px 700px white, 600px 250px white,
+        800px 600px white, 1000px 450px white, 1200px 100px white,
+        50px 350px white, 250px 50px white, 450px 550px white;
+      animation: twinkle 4s infinite;
+    }
+
+    .stars::after {
+      box-shadow: 
+        150px 250px #05d9e8, 350px 150px #ff2a6d, 550px 450px #d300c5,
+        750px 100px #01ffc3, 950px 350px #05d9e8, 1150px 200px #ff2a6d;
+      animation: twinkle 3s infinite reverse;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* Floating Orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      z-index: -1;
+      animation: float 12s infinite ease-in-out;
+    }
+
+    .orb1 {
+      width: 350px;
+      height: 350px;
+      background: var(--neon-purple);
+      top: 10%;
+      right: 10%;
+    }
+
+    .orb2 {
+      width: 300px;
+      height: 300px;
+      background: var(--neon-blue);
+      bottom: 10%;
+      left: 10%;
+      animation-delay: 3s;
+    }
+
+    .orb3 {
+      width: 250px;
+      height: 250px;
+      background: var(--neon-pink);
+      top: 40%;
+      left: 40%;
+      animation-delay: 6s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(40px, -60px) scale(1.1); }
+      66% { transform: translate(-30px, 40px) scale(0.9); }
+    }
+
+    /* ניווט עליון */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(10, 10, 18, 0.7);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(5, 217, 232, 0.2);
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px rgba(5, 217, 232, 0.5);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--neon-blue);
+      text-shadow: 0 0 12px var(--neon-blue);
+    }
+
+    /* תפריט בחירת שפה */
+    .lang-select {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--neon-blue);
+      border: 1px solid rgba(5, 217, 232, 0.4);
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-family: 'Heebo', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      outline: none;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .lang-select:hover {
+      background: rgba(5, 217, 232, 0.2);
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 15px rgba(5, 217, 232, 0.4);
+    }
+
+    .lang-select option {
+      background: #0a0a12;
+      color: white;
+    }
+
+    /* כרטיסייה ראשית */
     .container {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 30px;
+      width: 100%;
+      padding: 120px 20px 40px;
     }
 
     .main-card {
-      background: var(--card-bg);
-      -webkit-backdrop-filter: var(--glass-blur);
-      backdrop-filter: var(--glass-blur);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(15, 15, 25, 0.65);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(5, 217, 232, 0.25);
       border-radius: 28px;
-      padding: 60px 40px;
-      max-width: 450px;
+      padding: 50px 35px;
+      max-width: 480px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      transition: box-shadow 0.3s ease;
+      box-shadow: 0 0 40px rgba(5, 217, 232, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.03);
+      transition: all 0.4s ease;
     }
 
     .main-card:hover {
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 42, 109, 0.4);
+      box-shadow: 0 0 60px rgba(255, 42, 109, 0.25);
     }
 
-    /* תמונת פרופיל יוקרתית */
+    /* תמונת פרופיל ניאון */
     .profile-img-container {
       position: relative;
       display: inline-block;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     .profile-img {
-      width: 140px;
-      height: 140px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 0.4s ease, border-color 0.4s ease;
-    }
-
-    /* אפקט זוהר לתמונה */
-    .profile-img-container::after {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-      border-radius: 50%;
-      z-index: -1;
-      opacity: 0.7;
-      transition: opacity 0.4s ease;
+      border: 3px solid var(--neon-blue);
+      box-shadow: 0 0 25px rgba(5, 217, 232, 0.6);
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
     .profile-img-container:hover .profile-img {
-      transform: scale(1.05);
-      border-color: rgba(255, 255, 255, 0.3);
+      transform: scale(1.06);
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 35px rgba(255, 42, 109, 0.8);
     }
 
-    .profile-img-container:hover::after {
-      opacity: 1;
-    }
-
-    /* כותרות ופרטים */
+    /* כותרות סייבר */
     h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
       margin-bottom: 15px;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #fff 0%, var(--neon-blue) 50%, var(--neon-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowText 3s ease-in-out infinite alternate;
+      line-height: 1.3;
     }
 
-    h1 span.wave {
-      font-size: 1.8rem;
+    @keyframes glowText {
+      from { filter: drop-shadow(0 0 8px rgba(5, 217, 232, 0.4)); }
+      to { filter: drop-shadow(0 0 20px rgba(255, 42, 109, 0.7)); }
     }
 
     p.subtitle {
-      color: var(--text-sub);
-      font-size: 1.1rem;
-      font-weight: 400;
-      margin-bottom: 50px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 1.05rem;
+      margin-bottom: 40px;
       line-height: 1.6;
-      max-width: 380px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    /* גריד של קישורים מודרניים - פריסה אנכית */
+    /* כרטיסיות קישורים ניאון */
     .links-container {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
-    /* עיצוב כל כרטיסיית קישור */
     .link-item {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 18px;
-      padding: 18px 30px;
-      color: var(--text-main);
+      padding: 16px 25px;
+      color: white;
       text-decoration: none;
       display: flex;
       align-items: center;
-      justify-content: start; /* יישור לימין לטקסט */
-      gap: 18px;
+      gap: 15px;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
     }
 
-    /* אפקט מעבר ייחודי - צבעוניות */
     .link-item:hover {
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(5, 217, 232, 0.1);
+      border-color: var(--neon-blue);
       transform: translateY(-4px) scale(1.02);
-      border-color: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 25px rgba(5, 217, 232, 0.3);
     }
 
-    /* הבלטה של אייקון וטקסט ב-hover */
-    .link-item:hover span.icon {
-      filter: drop-shadow(0 0 5px rgba(255,255,255,0.6));
-    }
-
-    /* כרטיסיית "תיק עבודות" המודגשת */
     .link-item.portfolio {
-      background: var(--text-main);
-      color: #000000;
-      font-weight: 600;
-      border-color: #ffffff;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+      color: white;
+      font-weight: 700;
+      border: none;
+      box-shadow: 0 0 25px rgba(5, 217, 232, 0.4);
     }
 
     .link-item.portfolio:hover {
-      background: #f0f0f0;
-      color: #000000;
-      transform: translateY(-4px);
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 0 40px rgba(5, 217, 232, 0.8), 0 0 60px rgba(211, 0, 197, 0.5);
     }
 
-    /* עיצוב אייקונים עדין */
     .link-item span.icon {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       width: 30px;
-      text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: filter 0.3s ease;
     }
 
-    /* יישור טקסט לימין */
     .link-item strong {
-      font-size: 1.15rem;
-      letter-spacing: -0.2px;
+      font-size: 1.1rem;
+      font-family: 'Heebo', sans-serif;
     }
-
-    /* פונטים - אופציונלי אך משפר משמעותית */
-    /* מומלץ להוסיף קישור לפונט בגוף ה-head */
-    
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+  <!-- רקע ואורות -->
+  <div class="bg-animation"></div>
+  <div class="stars"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <!-- תפריט עליון עם בחירת שפה -->
+  <nav>
+    <div class="logo">EYTAN.DEV</div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#projects" id="nav-projects">פרויקטים</a></li>
+      </ul>
+      
+      <!-- בחירת שפה -->
+      <select class="lang-select" onchange="changeLanguage(this.value)">
+        <option value="he" selected>🇮🇱 עברית</option>
+        <option value="en">🇺🇸 English</option>
+        <option value="es">🇪🇸 Español</option>
+        <option value="ar">🇦🇪 العربية</option>
+      </select>
+    </div>
+  </nav>
+
+  <!-- כרטיסיית הפורטפוליו -->
   <div class="container">
     <div class="main-card">
-      <!-- תמונת פרופיל -->
+      
       <div class="profile-img-container">
-        <img src="WhatsApp Image 2026-07-28 at 16.46.48.jpeg" alt="פרופיל איתן סבידובסקי" class="profile-img">
+        <img src="WhatsApp Image 2026-07-28 at 16.46.48.jpeg" alt="איתן סבידובסקי" class="profile-img">
       </div>
 
-      <!-- פרטים אישיים -->
-      <h1>
-        <span class="wave">👋</span>
-        שלום, אני איתן סבידובסקי
-      </h1>
-      <p class="subtitle">מפתח / מעצב | מומחה בפרויקטים ופתרונות טכנולוגיים</p>
+      <h1 id="title">שלום, אני איתן סבידובסקי 👋</h1>
+      <p class="subtitle" id="subtitle">מפתח / מעצב | מומחה בפרויקטים ופתרונות טכנולוגיים</p>
 
-      <!-- כרטיסיות קישורים (אנכית ומודרנית) -->
       <div class="links-container">
         
-        <!-- תיק עבודות / פרויקטים - מודגש -->
         <a href="#projects" class="link-item portfolio">
           <span class="icon">🚀</span>
-          <strong>תיק עבודות</strong>
+          <strong id="btn-portfolio">תיק עבודות</strong>
         </a>
 
-        <!-- קישור ל-GitHub -->
         <a href="https://github.com/EytanichProgrammer" target="_blank" class="link-item">
           <span class="icon">🐙</span>
           <strong>GitHub</strong>
         </a>
 
-        <!-- קישור ל-LinkedIn -->
         <a href="https://linkedin.com/in/YOUR-PROFILE" target="_blank" class="link-item">
           <span class="icon">💼</span>
           <strong>LinkedIn</strong>
@@ -236,6 +392,55 @@
       </div>
     </div>
   </div>
+
+  <!-- סקריפט החלפת שפות -->
+  <script>
+    const translations = {
+      he: {
+        dir: 'rtl',
+        navProjects: 'פרויקטים',
+        title: 'שלום, אני איתן סבידובסקי 👋',
+        subtitle: 'מפתח / מעצב | מומחה בפרויקטים ופתרונות טכנולוגיים',
+        btnPortfolio: 'תיק עבודות'
+      },
+      en: {
+        dir: 'ltr',
+        navProjects: 'Projects',
+        title: 'Hi, I\'m Eytan Svidovsky 👋',
+        subtitle: 'Developer / Designer | Tech Solutions Specialist',
+        btnPortfolio: 'Portfolio'
+      },
+      es: {
+        dir: 'ltr',
+        navProjects: 'Proyectos',
+        title: 'Hola, soy Eytan Svidovsky 👋',
+        subtitle: 'Desarrollador / Diseñador | Especialista en Soluciones Tecnológicas',
+        btnPortfolio: 'Portafolio'
+      },
+      ar: {
+        dir: 'rtl',
+        navProjects: 'مشاريع',
+        title: 'أهلاً، أنا إيتان سفيدوفسكي 👋',
+        subtitle: 'مطور / مصمم | خبير في الحلول التكنولوجية',
+        btnPortfolio: 'معرض الأعمال'
+      }
+    };
+
+    function changeLanguage(lang) {
+      const data = translations[lang];
+      if (!data) return;
+
+      // שינוי כיוון הדף (RTL / LTR)
+      document.documentElement.dir = data.dir;
+      document.documentElement.lang = lang;
+
+      // עדכון הטקסטים
+      document.getElementById('nav-projects').innerText = data.navProjects;
+      document.getElementById('title').innerText = data.title;
+      document.getElementById('subtitle').innerText = data.subtitle;
+      document.getElementById('btn-portfolio').innerText = data.btnPortfolio;
+    }
+  </script>
 
 </body>
 </html>
