@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>הפורטפוליו שלי</title>
+  <style>
+    /* רקע שחור כהה עיצוב נקי */
+    body {
+      background-color: #0b0b0b;
+      color: #ffffff;
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    /* מיקום במרכז */
+    .container {
+      text-align: center;
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    /* תמונת פרופיל עגולה */
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 20px;
+    }
+
+    /* כותרות */
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      color: #a0a0a0;
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    /* גריד של כרטיסיות הקישורים */
+    .links-grid {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* עיצוב כל כרטיסייה */
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 15px 25px;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      min-width: 100px;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      background: #252525;
+      transform: translateY(-3px);
+    }
+
+    /* כרטיסייה מודגשת */
+    .card.highlight {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .card.highlight:hover {
+      background: #e5e5e5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- תמונת פרופיל -->
+    <img src="WhatsApp Image 2026-07-28 at 16.46.48.jpeg" alt="איתן סבידובסקי" class="profile-img">
+
+    <!-- פרטים אישיים -->
+    <h1>שלום, אני איתן סבידובסקי 👋</h1>
+    <p class="subtitle">מפתח / מעצב | מומחה בפרויקטים ופתרונות טכנולוגיים</p>
+
+    <!-- כרטיסיות קישורים -->
+    <div class="links-grid">
+
+      <!-- תיק עבודות / פרויקטים -->
+      <a href="#projects" class="card highlight">
+        <span>🚀</span>
+        <strong>תיק עבודות</strong>
+      </a>
+
+      <!-- קישור ל-LinkedIn -->
+      <a href="https://linkedin.com/in/YOUR-PROFILE" target="_blank" class="card">
+        <span>💼</span>
+        <strong>LinkedIn</strong>
+      </a>
+
+      <!-- קישור ל-GitHub -->
+      <a href="https://github.com/YOUR-USERNAME" target="_blank" class="card">
+        <span>🐙</span>
+        <strong>GitHub</strong>
+      </a>
+
+    </div>
+  </div>
+
+</body>
+</html>
